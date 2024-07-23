@@ -1,17 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
 const app = express();
-const port = 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.listen(port, (err) => {
-    if (err) {
-        return console.log('Something bad happened', err);
-    }
-    console.log(`Server is listening on ${port}`);
-});
-
-
+app.use(bodyParser.json());
+app.use('/users', routes);
 
 module.exports = app;
